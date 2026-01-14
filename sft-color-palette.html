@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Streetfood Tycoon - Color Palette</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #FFF8DC 0%, #FFE4B5 50%, #FFE0B2 100%);
+            padding: 24px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .header h1 {
+            font-size: 48px;
+            font-weight: bold;
+            color: #C8511B;
+            margin-bottom: 12px;
+        }
+
+        .header h2 {
+            font-size: 24px;
+            color: #4A5568;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            font-size: 14px;
+            color: #718096;
+            font-style: italic;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        @media (min-width: 768px) {
+            .grid-2 {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .section {
+            background: white;
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .section-indicator {
+            width: 4px;
+            height: 24px;
+            border-radius: 2px;
+            margin-right: 8px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2D3748;
+        }
+
+        .section-desc {
+            font-size: 12px;
+            color: #718096;
+            margin-bottom: 12px;
+        }
+
+        .color-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .color-grid-3 {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        .color-swatch {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .color-swatch:hover {
+            box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+            transform: translateY(-2px);
+        }
+
+        .color-preview {
+            height: 80px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .copy-icon {
+            opacity: 0;
+            transition: opacity 0.2s;
+            color: white;
+            font-size: 20px;
+        }
+
+        .color-swatch:hover .copy-icon {
+            opacity: 1;
+        }
+
+        .color-info {
+            padding: 12px;
+        }
+
+        .color-name {
+            font-weight: bold;
+            color: #2D3748;
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+
+        .color-hex {
+            font-family: 'Courier New', monospace;
+            font-size: 11px;
+            color: #718096;
+            margin-bottom: 8px;
+        }
+
+        .color-usage {
+            font-size: 11px;
+            color: #A0AEC0;
+            line-height: 1.4;
+        }
+
+        .color-inspiration {
+            font-size: 11px;
+            color: #C8511B;
+            font-style: italic;
+            margin-top: 4px;
+        }
+
+        .guidelines {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            padding: 32px;
+            margin-top: 48px;
+        }
+
+        .guidelines h3 {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2D3748;
+            margin-bottom: 24px;
+        }
+
+        .guidelines-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        @media (min-width: 768px) {
+            .guidelines-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .guidelines h4 {
+            font-weight: bold;
+            color: #4A5568;
+            margin-bottom: 12px;
+        }
+
+        .guidelines ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .guidelines li {
+            font-size: 14px;
+            color: #718096;
+            line-height: 1.8;
+            margin-bottom: 8px;
+        }
+
+        .note-box {
+            background: #FFF8E1;
+            border-left: 4px solid #C8511B;
+            padding: 16px;
+            border-radius: 4px;
+        }
+
+        .note-box p {
+            font-size: 14px;
+            color: #4A5568;
+            line-height: 1.6;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: #2D3748;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 1000;
+        }
+
+        .toast.show {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>Streetfood Tycoon</h1>
+        </div>
+
+        <!-- Core Color Systems -->
+        <div class="grid-2">
+            <!-- Primary & Currency -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-indicator" style="background-color: #C8511B;"></div>
+                    <h3 class="section-title">Primary & Currency</h3>
+                </div>
+                <div class="color-grid" id="primary-grid"></div>
+            </div>
+
+            <!-- Rarity Tiers -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-indicator" style="background-color: #9C27B0;"></div>
+                    <h3 class="section-title">Rarity Tiers</h3>
+                </div>
+                <div class="color-grid" id="rarity-grid"></div>
+            </div>
+
+            <!-- Functional & Customers -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-indicator" style="background-color: #2E7D32;"></div>
+                    <h3 class="section-title">Functional & Customers</h3>
+                </div>
+                <div class="color-grid" id="functional-grid"></div>
+            </div>
+
+            <!-- UI Base & Accents -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-indicator" style="background-color: #5D6670;"></div>
+                    <h3 class="section-title">UI Base & Accents</h3>
+                </div>
+                <div class="color-grid" id="ui-grid"></div>
+            </div>
+        </div>
+
+        <!-- Special Palettes -->
+        <div class="grid-2">
+            <!-- Food-Inspired -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-indicator" style="background-color: #8B2635;"></div>
+                    <h3 class="section-title">Food-Inspired Palette</h3>
+                </div>
+                <div class="color-grid" id="food-grid"></div>
+            </div>
+
+            <!-- Halo-Halo -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-indicator" style="background-color: #FF6B9D;"></div>
+                    <h3 class="section-title">Halo-Halo Desserts</h3>
+                </div>
+                <p class="section-desc">Vibrant colors for epic dessert stalls</p>
+                <div class="color-grid color-grid-3" id="halohalo-grid"></div>
+            </div>
+        </div>
+
+        <!-- Guidelines -->
+        <div class="guidelines">
+            <h3>Food Color Strategy</h3>
+            
+            <div class="guidelines-grid">
+                <div>
+                    <h4>Color Philosophy</h4>
+                    <ul>
+                        <li>• <strong>Bold & Saturated:</strong> High-contrast colors (#4CAF50, #2196F3, #9C27B0) ensure instant readability</li>
+                        <li>• <strong>No Outlines Needed:</strong> Colors pop against asphalt road backgrounds without borders</li>
+                        <li>• <strong>Mobile Game Standard:</strong> Follows Eatventure/Idle Food Court color intensity</li>
+                        <li>• <strong>Clear Hierarchy:</strong> Green → Blue → Purple → Orange progression is intuitive</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4>Implementation Tips</h4>
+                    <ul>
+                        <li>• Use <strong>Fresh Green</strong> (#4CAF50) for all Common stall cards</li>
+                        <li>• <strong>Asphalt Road</strong> (#5D6670) as main background—all colors pop against this</li>
+                        <li>• <strong>Fiesta Orange</strong> (#FF9800) makes Legendaries unmistakable</li>
+                        <li>• White card backgrounds (#FFFFFF) let food illustrations shine</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="note-box">
+                <p><strong>🔥 Heat Intensity System:</strong> Consider using <code>#C62828 (Siling Labuyo)</code> as a spice-level indicator for savory stalls, adding gameplay depth through visual "heat" warnings.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">Color copied to clipboard!</div>
+
+    <script>
+        const palette = {
+            primary: [
+                { color: '#C8511B', name: 'Adobo Brown', usage: 'Primary brand, main UI', inspiration: 'Caramelized BBQ glaze' },
+                { color: '#E8661D', name: 'Inihaw Char', usage: 'CTA buttons, active states', inspiration: 'Charred meat edges' },
+                { color: '#8B3A0E', name: 'Deep Soy', usage: 'Pressed states, shadows', inspiration: 'Dark soy marinade' },
+                { color: '#F4A460', name: 'Banana-cue Sugar', usage: 'Currency, rewards', inspiration: 'Caramelized sugar coating' },
+                { color: '#FFD28F', name: 'Turon Gold', usage: 'Coin shimmer, highlights', inspiration: 'Golden fried wrapper' },
+                { color: '#D4924A', name: 'Burnt Sugar', usage: 'Premium currency', inspiration: 'Caramel drips' }
+            ],
+            rarity: [
+                { color: '#4CAF50', name: 'Fresh Green', usage: 'Common stalls', inspiration: 'Vibrant street cart energy' },
+                { color: '#2196F3', name: 'Bright Blue', usage: 'Rare stalls', inspiration: 'Bold taho vendor style' },
+                { color: '#9C27B0', name: 'Vivid Purple', usage: 'Epic stalls', inspiration: 'Rich ube desserts' },
+                { color: '#FF9800', name: 'Fiesta Orange', usage: 'Legendary stalls', inspiration: 'Golden empanada glow' }
+            ],
+            functional: [
+                { color: '#2E7D32', name: 'Fresh Calamansi', usage: 'Success, EXP gain', inspiration: 'Fresh citrus' },
+                { color: '#C62828', name: 'Siling Labuyo', usage: 'Warnings, spicy level', inspiration: 'Red chili peppers' },
+                { color: '#1976D2', name: 'Ice Water Blue', usage: 'Info, cooling items', inspiration: 'Cold refreshments' },
+                { color: '#F57C00', name: 'Sunset Manila', usage: 'Time-limited events', inspiration: 'Street sunset glow' },
+                { color: '#FF9E80', name: 'Normal Customer', usage: 'Standard customers', inspiration: 'Casual street wear' },
+                { color: '#FF5252', name: 'Hungry Customer', usage: 'High appetite customers', inspiration: 'Excited buyer' },
+                { color: '#9C27B0', name: 'VIP Customer', usage: 'Premium customers', inspiration: 'Business class' },
+                { color: '#FFD740', name: 'Influencer', usage: 'Social media customers', inspiration: 'Camera flash gold' }
+            ],
+            ui: [
+                { color: '#5D6670', name: 'Asphalt Road', usage: 'Main road/path background', inspiration: 'Street pavement' },
+                { color: '#3E4550', name: 'Dark Concrete', usage: 'Shadows, depth', inspiration: 'Worn sidewalk' },
+                { color: '#8B95A0', name: 'Light Pavement', usage: 'Lighter road sections', inspiration: 'Sun-lit concrete' },
+                { color: '#F5F5F5', name: 'Market Light', usage: 'UI backgrounds, cards', inspiration: 'Clean surfaces' },
+                { color: '#FFFFFF', name: 'Pure White', usage: 'Stall card backgrounds', inspiration: 'Bright highlights' },
+                { color: '#FF3D00', name: 'Hot Sauce Red', usage: 'Urgent notifications', inspiration: 'Spicy warning' },
+                { color: '#00E676', name: 'Green Mango', usage: 'New items, fresh', inspiration: 'Unripe mango' },
+                { color: '#FFEA00', name: 'Sorbetes Yellow', usage: 'Special offers', inspiration: 'Ice cream cart' },
+                { color: '#651FFF', name: 'Neon Sign Purple', usage: 'Events, festivals', inspiration: 'Market neon lights' }
+            ],
+            food: [
+                { color: '#8B2635', name: 'Isaw Blood Red', usage: 'Grilled meat stalls', inspiration: 'Isaw & BBQ' },
+                { color: '#E8DCC8', name: 'Fishball Beige', usage: 'Fried food backgrounds', inspiration: 'Fishball color' },
+                { color: '#4A5D23', name: 'Banana Leaf', usage: 'Natural/organic elements', inspiration: 'Serving leaves' },
+                { color: '#F5E6D3', name: 'Lugaw Cream', usage: 'Comfort food stalls', inspiration: 'Rice porridge' },
+                { color: '#98473E', name: 'Vinegar Brown', usage: 'Sauce indicators', inspiration: 'Dipping sauce' },
+                { color: '#FFF3E0', name: 'Bibingka Cream', usage: 'Dessert stalls', inspiration: 'Rice cake top' }
+            ],
+            halohalo: [
+                { color: '#FF6B9D', name: 'Gulaman Pink', usage: 'Halo-Halo accent', inspiration: 'Pink gelatin' },
+                { color: '#9DFF6B', name: 'Macapuno Green', usage: 'Halo-Halo ingredients', inspiration: 'Coconut strings' },
+                { color: '#6B9DFF', name: 'Leche Flan Blue', usage: 'Ice/cold elements', inspiration: 'Shaved ice' },
+                { color: '#FFE66B', name: 'Mais Yellow', usage: 'Corn elements', inspiration: 'Sweet corn kernels' },
+                { color: '#C76BFF', name: 'Ube Ice Cream', usage: 'Premium desserts', inspiration: 'Ube topping' }
+            ]
+        };
+
+        function createSwatch(item) {
+            const swatch = document.createElement('div');
+            swatch.className = 'color-swatch';
+            swatch.onclick = () => copyColor(item.color);
+            
+            swatch.innerHTML = `
+                <div class="color-preview" style="background-color: ${item.color};">
+                    <span class="copy-icon">📋</span>
+                </div>
+                <div class="color-info">
+                    <div class="color-name">${item.name}</div>
+                    <div class="color-hex">${item.color}</div>
+                    <div class="color-usage">${item.usage}</div>
+                    ${item.inspiration ? `<div class="color-inspiration">🍴 ${item.inspiration}</div>` : ''}
+                </div>
+            `;
+            
+            return swatch;
+        }
+
+        function copyColor(color) {
+            navigator.clipboard.writeText(color).then(() => {
+                const toast = document.getElementById('toast');
+                toast.classList.add('show');
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 2000);
+            });
+        }
+
+        function renderPalette() {
+            const primaryGrid = document.getElementById('primary-grid');
+            const rarityGrid = document.getElementById('rarity-grid');
+            const functionalGrid = document.getElementById('functional-grid');
+            const uiGrid = document.getElementById('ui-grid');
+            const foodGrid = document.getElementById('food-grid');
+            const halohaloGrid = document.getElementById('halohalo-grid');
+
+            palette.primary.forEach(item => primaryGrid.appendChild(createSwatch(item)));
+            palette.rarity.forEach(item => rarityGrid.appendChild(createSwatch(item)));
+            palette.functional.forEach(item => functionalGrid.appendChild(createSwatch(item)));
+            palette.ui.forEach(item => uiGrid.appendChild(createSwatch(item)));
+            palette.food.forEach(item => foodGrid.appendChild(createSwatch(item)));
+            palette.halohalo.forEach(item => halohaloGrid.appendChild(createSwatch(item)));
+        }
+
+        renderPalette();
+    </script>
+</body>
+</html>
