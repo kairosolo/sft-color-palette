@@ -219,6 +219,11 @@
             border-left: 4px solid #C8511B;
             padding: 16px;
             border-radius: 4px;
+            margin-bottom: 16px;
+        }
+
+        .note-box:last-child {
+            margin-bottom: 0;
         }
 
         .note-box p {
@@ -267,9 +272,10 @@
             <!-- Rarity Tiers -->
             <div class="section">
                 <div class="section-header">
-                    <div class="section-indicator" style="background-color: #9C27B0;"></div>
+                    <div class="section-indicator" style="background-color: #FFD700;"></div>
                     <h3 class="section-title">Rarity Tiers</h3>
                 </div>
+                <p class="section-desc">Complete progression: Common → Rare → Epic → Legendary → Special</p>
                 <div class="color-grid" id="rarity-grid"></div>
             </div>
 
@@ -316,7 +322,7 @@
 
         <!-- Guidelines -->
         <div class="guidelines">
-            <h3>Food Color Strategy</h3>
+            <h3>Implementation Guidelines</h3>
             
             <div class="guidelines-grid">
                 <div>
@@ -325,23 +331,20 @@
                         <li>• <strong>Bold & Saturated:</strong> High-contrast colors (#4CAF50, #2196F3, #9C27B0) ensure instant readability</li>
                         <li>• <strong>No Outlines Needed:</strong> Colors pop against asphalt road backgrounds without borders</li>
                         <li>• <strong>Mobile Game Standard:</strong> Follows Eatventure/Idle Food Court color intensity</li>
-                        <li>• <strong>Clear Hierarchy:</strong> Green → Blue → Purple → Orange progression is intuitive</li>
+                        <li>• <strong>Clear Hierarchy:</strong> Green → Blue → Purple → Orange → Gold progression is intuitive</li>
                     </ul>
                 </div>
                 
                 <div>
-                    <h4>Implementation Tips</h4>
+                    <h4>Core Implementation</h4>
                     <ul>
                         <li>• Use <strong>Fresh Green</strong> (#4CAF50) for all Common stall cards</li>
                         <li>• <strong>Asphalt Road</strong> (#5D6670) as main background—all colors pop against this</li>
                         <li>• <strong>Fiesta Orange</strong> (#FF9800) makes Legendaries unmistakable</li>
+                        <li>• <strong>Classic Gold</strong> (#FFD700) crowns Special stalls—never for currency UI</li>
                         <li>• White card backgrounds (#FFFFFF) let food illustrations shine</li>
                     </ul>
                 </div>
-            </div>
-
-            <div class="note-box">
-                <p><strong>🔥 Heat Intensity System:</strong> Consider using <code>#C62828 (Siling Labuyo)</code> as a spice-level indicator for savory stalls, adding gameplay depth through visual "heat" warnings.</p>
             </div>
         </div>
     </div>
@@ -363,7 +366,8 @@
                 { color: '#4CAF50', name: 'Fresh Green', usage: 'Common stalls', inspiration: 'Vibrant street cart energy' },
                 { color: '#2196F3', name: 'Bright Blue', usage: 'Rare stalls', inspiration: 'Bold taho vendor style' },
                 { color: '#9C27B0', name: 'Vivid Purple', usage: 'Epic stalls', inspiration: 'Rich ube desserts' },
-                { color: '#FF9800', name: 'Fiesta Orange', usage: 'Legendary stalls', inspiration: 'Golden empanada glow' }
+                { color: '#FF9800', name: 'Fiesta Orange', usage: 'Legendary stalls', inspiration: 'Golden empanada glow' },
+                { color: '#FFD700', name: 'Classic Gold', usage: 'Special stalls (ultimate tier)', inspiration: 'Pure prestige & excellence' }
             ],
             functional: [
                 { color: '#2E7D32', name: 'Fresh Calamansi', usage: 'Success, EXP gain', inspiration: 'Fresh citrus' },
